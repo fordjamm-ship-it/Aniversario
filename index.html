@@ -3,83 +3,244 @@
 <head>
   <meta charset="UTF-8">
   <title>Nuestro Aniversario ❤️</title>
+
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
       text-align: center;
       color: white;
     }
 
+    .pantalla { display: none; }
+    .activa { display: block; }
+
     h1 {
-      margin-top: 40px;
       font-size: 3em;
+      margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1.3em;
-      margin: 20px;
-    }
-
-    .galeria {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin: 30px;
-    }
-
-    .galeria img {
-      width: 200px;
-      height: 200px;
+    img {
+      width: 220px;
+      height: 220px;
       object-fit: cover;
-      border-radius: 15px;
-      transition: transform 0.3s;
+      border-radius: 20px;
+      margin-bottom: 20px;
     }
 
-    .galeria img:hover {
-      transform: scale(1.1);
+    .boton-corazon {
+      font-size: 3em;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .boton-corazon:hover {
+      transform: scale(1.2);
+    }
+
+    .contenedor {
+      position: relative;
+      width: 100%;
+      height: 100vh;
     }
 
     .frase {
-      margin: 30px;
-      font-style: italic;
-      font-size: 1.5em;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 1.8em;
+      width: 80%;
+      font-weight: bold;
     }
 
-    footer {
-      margin: 40px;
-      font-size: 1em;
+    .foto {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 15px;
     }
+
+    .f1 { top: 10%; left: 10%; }
+    .f2 { top: 10%; right: 10%; }
+    .f3 { bottom: 20%; left: 10%; }
+    .f4 { bottom: 20%; right: 10%; }
+
+    .botones {
+      position: absolute;
+      bottom: 10%;
+      width: 100%;
+    }
+
+    .btn {
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .encanto {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .romper {
+      background-color: #444;
+      color: white;
+      position: absolute;
+    }
+
   </style>
 </head>
+
 <body>
 
-  <h1>Feliz Aniversario ❤️</h1>
+<!-- 🎶 MÚSICA -->
+<audio id="musica" loop>
+  <source src="cancion.mp3" type="audio/mpeg">
+</audio>
 
-  <p>
-    Desde que llegaste a mi vida, todo cambió para mejor.  
-    Gracias por cada momento, cada sonrisa y cada recuerdo juntos.
-  </p>
+<!-- 🌹 INTRO -->
+<div id="intro" class="pantalla activa">
+  <div class="contenedor">
 
-  <div class="galeria">
-    <img src="foto1.jpg" alt="">
-    <img src="foto2.jpg" alt="">
-    <img src="foto3.jpg" alt="">
+    <h1>Cuánto tiempo, mi Rosa Helada ❄️🌹</h1>
+
+    <img src="foto_intro.jpg">
+
+    <div class="boton-corazon" onclick="empezarHistoria()">
+      ❤️ Entrar
+    </div>
+
   </div>
+</div>
 
-  <div class="frase">
-    "Contigo entendí lo que significa amar de verdad."
+<!-- ❤️ PANTALLA 1 -->
+<div id="pantalla1" class="pantalla">
+  <h1>A mi futura esposa 💖</h1>
+  <img src="foto1.jpg">
+  <div class="boton-corazon" onclick="siguiente()">❤️</div>
+</div>
+
+<!-- 💔 PANTALLA 2 -->
+<div id="pantalla2" class="pantalla">
+  <div class="contenedor">
+
+    <img src="foto2.jpg" class="foto f1">
+    <img src="foto3.jpg" class="foto f2">
+    <img src="foto4.jpg" class="foto f3">
+    <img src="foto5.jpg" class="foto f4">
+
+    <div class="frase">
+      LA ÚNICA MALDICIÓN QUE TENGO ES AMARTE,<br>
+      Y ESPERO NO LIBERARME NUNCA ❤️
+    </div>
+
+    <div class="botones">
+      <button class="btn encanto" onclick="irFinal()">ENCANTAR 💖</button>
+      <button class="btn romper" onclick="irRomper()">ROMPER MALDICIÓN 💔</button>
+    </div>
+
   </div>
+</div>
 
-  <div class="frase">
-    "Eres mi lugar favorito en todo el mundo."
+<!-- 💖 PANTALLA 3 -->
+<div id="pantalla3" class="pantalla">
+  <div class="contenedor">
+
+    <img src="foto6.jpg" class="foto f1">
+    <img src="foto7.jpg" class="foto f2">
+    <img src="foto8.jpg" class="foto f3">
+    <img src="foto9.jpg" class="foto f4">
+
+    <div class="frase">
+      Es tu ser lo que me encanta cada día.<br><br>
+      Con una conexión que no se necesita tocar,<br>
+      si vivir contigo es un sueño,<br>
+      solo sé que no quiero despertar.<br><br>
+      Te amo, amor de mi vida ❤️
+    </div>
+
   </div>
+</div>
 
-  <footer>
-    Te amo muchísimo ❤️
-  </footer>
+<!-- 💔🔥 PANTALLA 4 -->
+<div id="pantalla4" class="pantalla">
+  <div class="contenedor">
+
+    <img src="foto10.jpg" style="margin-top: 40px;">
+
+    <div class="frase">
+      BUEN INTENTO JEJE 😏<br><br>
+      PERO ES IMPOSIBLE ROMPER ESTE AMOR.<br><br>
+      ES UN PUNTO SIN RETORNO,<br>
+      ES ALGO MÁS QUE UNA ABSTRACCIÓN,<br>
+      ESTE AMOR ES FUEGO,<br>
+      Y ARDERÁ CON PASIÓN ❤️🔥
+    </div>
+
+    <button id="btnHuir" class="btn romper" onclick="intentarRomper()">
+      ROMPER 💔
+    </button>
+
+  </div>
+</div>
+
+<script>
+  function empezarHistoria() {
+    const musica = document.getElementById("musica");
+    musica.currentTime = 21; // 🔥 empieza en el segundo 21
+    musica.play();
+
+    document.getElementById("intro").classList.remove("activa");
+    document.getElementById("pantalla1").classList.add("activa");
+  }
+
+  function siguiente() {
+    document.getElementById("pantalla1").classList.remove("activa");
+    document.getElementById("pantalla2").classList.add("activa");
+  }
+
+  function irFinal() {
+    document.getElementById("pantalla2").classList.remove("activa");
+    document.getElementById("pantalla3").classList.add("activa");
+  }
+
+  function irRomper() {
+    document.getElementById("pantalla2").classList.remove("activa");
+    document.getElementById("pantalla4").classList.add("activa");
+  }
+
+  function intentarRomper() {
+    alert("BUEN INTENTO JEJE 😏\n\nPERO ES IMPOSIBLE ROMPER ESTE AMOR ❤️🔥");
+  }
+
+  // BOTÓN QUE HUYE 😏
+  document.addEventListener("mousemove", function(e) {
+    const boton = document.getElementById("btnHuir");
+    if (!boton) return;
+
+    const rect = boton.getBoundingClientRect();
+
+    const dx = Math.abs(e.clientX - (rect.left + rect.width/2));
+    const dy = Math.abs(e.clientY - (rect.top + rect.height/2));
+
+    if (dx < 100 && dy < 100) {
+      boton.style.left = Math.random() * (window.innerWidth - 120) + "px";
+      boton.style.top = Math.random() * (window.innerHeight - 80) + "px";
+    }
+  });
+
+</script>
 
 </body>
 </html>
